@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/newToDoFragment">
+    app:startDestination="@id/toDoListFragment">
 
     <fragment
         android:id="@+id/toDoListFragment"
         android:name="com.innovative.porosh.todoapp.ToDoListFragment"
         android:label="fragment_to_do_list"
-        tools:layout="@layout/fragment_to_do_list" />
+        tools:layout="@layout/fragment_to_do_list" >
+        <action
+            android:id="@+id/new_to_do_actions"
+            app:destination="@id/newToDoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newToDoFragment"
         android:name="com.innovative.porosh.todoapp.NewToDoFragment"
