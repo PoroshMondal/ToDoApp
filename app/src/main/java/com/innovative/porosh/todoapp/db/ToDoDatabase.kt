@@ -11,14 +11,16 @@ import com.innovative.porosh.todoapp.entities.ToDoModel
 abstract class ToDoDatabase : RoomDatabase() {
     abstract fun getToDoDao(): ToDoDao
 
-    private var toDoDatabase: ToDoDatabase? = null
+    companion object {
+        private var toDoDatabase: ToDoDatabase? = null
 
-    fun getDB(context: Context): ToDoDatabase {
-        return toDoDatabase ?: synchronized(this) {
-            val db = Room.databaseBuilder(context, ToDoDatabase::class.java,"ToDoDb")
-                .build()
-            toDoDatabase = db
-            db
+        fun getDB(context: Context): ToDoDatabase {
+            return toDoDatabase ?: synchronized(this) {
+                val db = Room.databaseBuilder(context, ToDoDatabase::class.java,"ToDoDb")
+                    .build()
+                toDoDatabase = db
+                db
+            }
         }
     }
 

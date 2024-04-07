@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
 import com.innovative.porosh.todoapp.databinding.FragmentNewToDoBinding
+import com.innovative.porosh.todoapp.db.ToDoDatabase
 import com.innovative.porosh.todoapp.dialogs.DatePickerDialogFragment
 import com.innovative.porosh.todoapp.dialogs.TimePickerDialogFragment
 import com.innovative.porosh.todoapp.entities.ToDoModel
@@ -58,6 +59,8 @@ class NewToDoFragment : Fragment() {
             }
 
             val toDo = ToDoModel(name = toDoName, priority = priority, date = dateInMillis, time = timeInMillis)
+
+            //ToDoDatabase.getDB(requireActivity()).getToDoDao().addToDo(toDo)
 
         }
 
