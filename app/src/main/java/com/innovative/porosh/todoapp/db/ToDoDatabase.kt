@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.innovative.porosh.todoapp.daos.ToDoDao
 import com.innovative.porosh.todoapp.entities.ToDoModel
 
-@Database(entities = [ToDoModel::class], version = 1)
+@Database(entities = [ToDoModel::class], version = 1, exportSchema = false)
 abstract class ToDoDatabase : RoomDatabase() {
     abstract fun getToDoDao(): ToDoDao
 
@@ -17,6 +17,7 @@ abstract class ToDoDatabase : RoomDatabase() {
         fun getDB(context: Context): ToDoDatabase {
             return toDoDatabase ?: synchronized(this) {
                 val db = Room.databaseBuilder(context, ToDoDatabase::class.java,"ToDoDb")
+                    .allowMainThreadQueries()
                     .build()
                 toDoDatabase = db
                 db

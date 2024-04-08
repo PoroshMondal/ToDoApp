@@ -60,7 +60,7 @@ class NewToDoFragment : Fragment() {
 
             val toDo = ToDoModel(name = toDoName, priority = priority, date = dateInMillis, time = timeInMillis)
 
-            //ToDoDatabase.getDB(requireActivity()).getToDoDao().addToDo(toDo)
+            ToDoDatabase.getDB(requireActivity()).getToDoDao().addToDo(toDo)
 
         }
 
