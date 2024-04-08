@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.innovative.porosh.todoapp.databinding.FragmentNewToDoBinding
 import com.innovative.porosh.todoapp.db.ToDoDatabase
 import com.innovative.porosh.todoapp.dialogs.DatePickerDialogFragment
@@ -14,6 +16,7 @@ import com.innovative.porosh.todoapp.dialogs.TimePickerDialogFragment
 import com.innovative.porosh.todoapp.entities.ToDoModel
 import com.innovative.porosh.todoapp.utils.Constants
 import com.innovative.porosh.todoapp.utils.Functions
+import com.innovative.porosh.todoapp.viewModels.ToDoViewModel
 
 class NewToDoFragment : Fragment() {
 
@@ -21,6 +24,14 @@ class NewToDoFragment : Fragment() {
     private var priority = Constants.PRIORITY_NORMAL
     private var dateInMillis = System.currentTimeMillis()
     private var timeInMillis = System.currentTimeMillis()
+
+    /*
+    * We can initialize a ViewModel using Kotlin Extension library
+    * like by viewModels()
+    * If same ViewModel used in several Fragments then we can use activityViewModels()
+    * Also we initialize it like we used it in the BMICalculator app
+    * */
+    private val toDoViewModel: ToDoViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,9 +70,9 @@ class NewToDoFragment : Fragment() {
             }
 
             val toDo = ToDoModel(name = toDoName, priority = priority, date = dateInMillis, time = timeInMillis)
+            toDoViewModel.insertToDo(toDo)
 
-            ToDoDatabase.getDB(requireActivity()).getToDoDao().addToDo(toDo)
-
+            findNavController().navigate(R.id.to_do_list_actions)
         }
 
         return binding.root

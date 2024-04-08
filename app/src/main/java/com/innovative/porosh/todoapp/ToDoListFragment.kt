@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.innovative.porosh.todoapp.databinding.FragmentToDoListBinding
 import com.innovative.porosh.todoapp.db.ToDoDatabase
+import com.innovative.porosh.todoapp.viewModels.ToDoViewModel
 
 class ToDoListFragment : Fragment() {
 
     private lateinit var binding: FragmentToDoListBinding
+    private val toDoViewModel: ToDoViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,9 +26,7 @@ class ToDoListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentToDoListBinding.inflate(inflater,container,false)
-        ToDoDatabase.getDB(requireActivity())
-            .getToDoDao()
-            .getAllToDos()
+        toDoViewModel.fetchAllToDos()
             .observe(viewLifecycleOwner,{toDoList ->
             Toast.makeText(activity, "${toDoList.size}",Toast.LENGTH_LONG).show()
         })
