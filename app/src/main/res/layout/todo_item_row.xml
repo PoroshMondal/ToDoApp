@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="todo"
+            type="com.innovative.porosh.todoapp.entities.ToDoModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -22,6 +24,7 @@
                 android:id="@+id/row_todo_priority_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:setPriorityIcon="@{todo.priority}"
                 android:src="@drawable/ic_red_star_24"
                 android:scaleType="centerCrop"
                 android:layout_centerInParent="true"
@@ -32,23 +35,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/row_todo_priority_img"
-                android:text="@string/todo_name"
+                android:text="@{todo.name}"
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:layout_marginStart="5dp" />
 
             <TextView
-                android:id="@+id/row_date_time_tv"
+                android:id="@+id/row_date_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/date_time"
                 android:layout_below="@id/row_todo_name_tv"
-                android:layout_alignStart="@+id/row_todo_name_tv" />
+                android:layout_alignStart="@+id/row_todo_name_tv"
+                app:setFormattedDate="@{todo.date}" />
+
+            <TextView
+                android:id="@+id/row_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/row_date_tv"
+                android:layout_below="@id/row_todo_name_tv"
+                app:setFormattedTime="@{todo.time}"/>
 
             <CheckBox
                 android:id="@+id/row_todo_completed_cb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="@{todo.completed}"
+                android:layout_centerInParent="true"
                 android:layout_toStartOf="@+id/row_menu_icon" />
 
             <TextView

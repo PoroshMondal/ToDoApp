@@ -19,16 +19,17 @@ class ToDoAdapter(private val actionCallback: (ToDoModel, String) -> Unit): List
         val actionCallback: (ToDoModel, String) -> Unit
     ): ViewHolder(binding.root){
         fun bind(toDoModel: ToDoModel){
-            binding.rowTodoNameTv.text = toDoModel.name
-            binding.rowDateTimeTv.text = "${Functions.getFormattedDateTime(toDoModel.date, "dd/MM/yyyy")} ${Functions.getFormattedDateTime(toDoModel.time, "hh:MM a")}"
-            binding.rowTodoCompletedCb.isChecked = toDoModel.isCompleted
+            binding.todo = toDoModel
+            //binding.rowTodoNameTv.text = toDoModel.name
+            //binding.rowDateTimeTv.text = "${Functions.getFormattedDateTime(toDoModel.date, "dd/MM/yyyy")} ${Functions.getFormattedDateTime(toDoModel.time, "hh:MM a")}"
+            //binding.rowTodoCompletedCb.isChecked = toDoModel.isCompleted
 
-            val iconId = when(toDoModel.priority){
+            /*val iconId = when(toDoModel.priority){
                 Constants.PRIORITY_LOW -> R.drawable.ic_blue_star_24
                 Constants.PRIORITY_NORMAL -> R.drawable.ic_green_star_24
                 else -> R.drawable.ic_red_star_24
-            }
-            binding.rowTodoPriorityImg.setImageResource(iconId)
+            }*/
+            //binding.rowTodoPriorityImg.setImageResource(iconId)
 
             binding.rowTodoCompletedCb.setOnClickListener {
                 actionCallback(toDoModel, Constants.TODO_EDIT)
