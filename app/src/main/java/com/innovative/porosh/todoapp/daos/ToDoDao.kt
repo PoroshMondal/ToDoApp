@@ -12,13 +12,13 @@ import com.innovative.porosh.todoapp.entities.ToDoModel
 interface ToDoDao {
 
     @Insert
-    fun addToDo(toDoModel: ToDoModel)
+    suspend fun addToDo(toDoModel: ToDoModel)
 
     @Update
-    fun updateToDo(toDoModel: ToDoModel)
+    suspend fun updateToDo(toDoModel: ToDoModel)
 
     @Delete
-    fun deleteToDo(toDoModel: ToDoModel)
+    suspend fun deleteToDo(toDoModel: ToDoModel)
 
     @Query("SELECT * FROM tbl_to_do ORDER BY id desc")
     fun getAllToDos(): LiveData<List<ToDoModel>>

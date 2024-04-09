@@ -3,8 +3,10 @@ package com.innovative.porosh.todoapp.viewModels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import com.innovative.porosh.todoapp.entities.ToDoModel
 import com.innovative.porosh.todoapp.repos.ToDoRepository
+import kotlinx.coroutines.launch
 
 /*
 * We will extend AndroidViewModel instead of ViewModel
@@ -20,7 +22,9 @@ class ToDoViewModel(application: Application): AndroidViewModel(application) {
     }
 
     fun insertToDo(toDoModel: ToDoModel){
-        repository.insertToDo(toDoModel)
+        viewModelScope.launch {
+            repository.insertToDo(toDoModel)
+        }
     }
 
     fun fetchAllToDos(): LiveData<List<ToDoModel>>{
@@ -31,11 +35,15 @@ class ToDoViewModel(application: Application): AndroidViewModel(application) {
         // to update isCompleted value of current ToDoModel
         //!toDoModel.isCompleted it changes the previous value
         toDoModel.isCompleted = !toDoModel.isCompleted
-        repository.updateToDo(toDoModel)
+        viewModelScope.launch {
+            repository.updateToDo(toDoModel)
+        }
     }
 
     fun deleteToDo(toDoModel: ToDoModel) {
-        repository.deleteToDo(toDoModel)
+        viewModelScope.launch {
+            repository.deleteToDo(toDoModel)
+        }
     }
 
 }

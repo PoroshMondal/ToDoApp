@@ -17,7 +17,7 @@ class ToDoRepository(private val context: Context) {
         toDoDao = ToDoDatabase.getDB(context).getToDoDao()
     }
 
-    fun insertToDo(toDoModel: ToDoModel){
+    suspend fun insertToDo(toDoModel: ToDoModel){
         toDoDao.addToDo(toDoModel)
     }
 
@@ -25,11 +25,11 @@ class ToDoRepository(private val context: Context) {
         return toDoDao.getAllToDos()
     }
 
-    fun updateToDo(toDoModel: ToDoModel) {
+    suspend fun updateToDo(toDoModel: ToDoModel) {
         toDoDao.updateToDo(toDoModel)
     }
 
-    fun deleteToDo(toDoModel: ToDoModel) {
+    suspend fun deleteToDo(toDoModel: ToDoModel) {
         toDoDao.deleteToDo(toDoModel)
     }
 
