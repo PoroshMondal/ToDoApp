@@ -27,4 +27,15 @@ class ToDoViewModel(application: Application): AndroidViewModel(application) {
         return repository.getAllToDos()
     }
 
+    fun updateToDo(toDoModel: ToDoModel) {
+        // to update isCompleted value of current ToDoModel
+        //!toDoModel.isCompleted it changes the previous value
+        toDoModel.isCompleted = !toDoModel.isCompleted
+        repository.updateToDo(toDoModel)
+    }
+
+    fun deleteToDo(toDoModel: ToDoModel) {
+        repository.deleteToDo(toDoModel)
+    }
+
 }

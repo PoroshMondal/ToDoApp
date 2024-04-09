@@ -25,4 +25,12 @@ class ToDoRepository(private val context: Context) {
         return toDoDao.getAllToDos()
     }
 
+    fun updateToDo(toDoModel: ToDoModel) {
+        toDoDao.updateToDo(toDoModel)
+    }
+
+    fun deleteToDo(toDoModel: ToDoModel) {
+        toDoDao.deleteToDo(toDoModel)
+    }
+
 }

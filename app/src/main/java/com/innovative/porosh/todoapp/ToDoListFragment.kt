@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.innovative.porosh.todoapp.adapters.ToDoAdapter
 import com.innovative.porosh.todoapp.databinding.FragmentToDoListBinding
-import com.innovative.porosh.todoapp.db.ToDoDatabase
+import com.innovative.porosh.todoapp.dialogs.DeleteConfirmationDialog
+import com.innovative.porosh.todoapp.entities.ToDoModel
+import com.innovative.porosh.todoapp.utils.Constants
 import com.innovative.porosh.todoapp.viewModels.ToDoViewModel
 
 class ToDoListFragment : Fragment() {
@@ -26,14 +29,31 @@ class ToDoListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentToDoListBinding.inflate(inflater,container,false)
+        val adapter = ToDoAdapter(::toDoAction)
+        binding.toDoRv.layoutManager = LinearLayoutManager(activity)
+        binding.toDoRv.adapter = adapter
         toDoViewModel.fetchAllToDos()
             .observe(viewLifecycleOwner,{toDoList ->
-            Toast.makeText(activity, "${toDoList.size}",Toast.LENGTH_LONG).show()
+                adapter.submitList(toDoList)
+            //Toast.makeText(activity, "${toDoList.size}",Toast.LENGTH_LONG).show()
         })
         binding.newToDoFat.setOnClickListener {
             findNavController().navigate(R.id.new_to_do_actions)
         }
         return binding.root
+    }
+
+    private fun toDoAction(toDoModel: ToDoModel, tag: String){
+        when(tag){
+            Constants.TODO_EDIT -> {
+                toDoViewModel.updateToDo(toDoModel)
+            }
+            Constants.TODO_DELETE -> {
+                DeleteConfirmationDialog {
+                    toDoViewModel.deleteToDo(toDoModel)
+                }.show(childFragmentManager,"delete")
+            }
+        }
     }
 
 }
