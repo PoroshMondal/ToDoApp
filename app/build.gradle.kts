@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.room.runtime)
+    implementation (libs.androidx.work.rxjava2)
 
     //noinspection KaptUsageInsteadOfKsp
     kapt(libs.androidx.room.compiler)

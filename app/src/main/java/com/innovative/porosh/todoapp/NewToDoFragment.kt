@@ -17,6 +17,7 @@ import com.innovative.porosh.todoapp.entities.ToDoModel
 import com.innovative.porosh.todoapp.utils.Constants
 import com.innovative.porosh.todoapp.utils.Functions
 import com.innovative.porosh.todoapp.viewModels.ToDoViewModel
+import com.innovative.porosh.todoapp.workManagerUtils.WorkManagerService
 
 class NewToDoFragment : Fragment() {
 
@@ -71,6 +72,8 @@ class NewToDoFragment : Fragment() {
 
             val toDo = ToDoModel(name = toDoName, priority = priority, date = dateInMillis, time = timeInMillis)
             toDoViewModel.insertToDo(toDo)
+
+            WorkManagerService(requireContext()).schedule(toDoName,5000)
 
             findNavController().navigate(R.id.to_do_list_actions)
         }
