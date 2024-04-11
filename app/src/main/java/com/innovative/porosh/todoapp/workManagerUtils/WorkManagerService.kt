@@ -5,6 +5,7 @@ import androidx.work.Constraints
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import androidx.work.workDataOf
 import java.util.concurrent.TimeUnit
 
 class WorkManagerService(val context: Context) {
@@ -19,6 +20,7 @@ class WorkManagerService(val context: Context) {
         val request = OneTimeWorkRequestBuilder<NotificationWorker>()
             .addTag(name)
             .setInitialDelay(delay, TimeUnit.MILLISECONDS)
+            .setInputData(workDataOf("name" to name))
             //.setConstraints(constraints)
             .build()
 

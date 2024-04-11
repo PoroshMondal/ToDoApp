@@ -46,7 +46,7 @@ class NewToDoFragment : Fragment() {
         binding.priorityRg.setOnCheckedChangeListener { radioGroup, radioBtnId ->
             val rd = radioGroup.findViewById<RadioButton>(radioBtnId)
             priority = rd.text.toString().trim()
-            Toast.makeText(activity,priority,Toast.LENGTH_LONG).show()
+            //Toast.makeText(activity,priority,Toast.LENGTH_LONG).show()
         }
 
         binding.dateBtn.setOnClickListener {
@@ -73,7 +73,7 @@ class NewToDoFragment : Fragment() {
             val toDo = ToDoModel(name = toDoName, priority = priority, date = dateInMillis, time = timeInMillis)
             toDoViewModel.insertToDo(toDo)
 
-            WorkManagerService(requireContext()).schedule(toDoName,5000)
+            WorkManagerService(requireContext()).schedule(toDoName,60000)
 
             findNavController().navigate(R.id.to_do_list_actions)
         }
