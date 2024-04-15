@@ -14,7 +14,9 @@ import com.innovative.porosh.todoapp.dialogs.DeleteConfirmationDialog
 import com.innovative.porosh.todoapp.entities.ToDoModel
 import com.innovative.porosh.todoapp.utils.Constants
 import com.innovative.porosh.todoapp.viewModels.ToDoViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ToDoListFragment : Fragment() {
 
     private lateinit var binding: FragmentToDoListBinding

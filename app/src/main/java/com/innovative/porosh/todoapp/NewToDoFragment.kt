@@ -18,7 +18,9 @@ import com.innovative.porosh.todoapp.utils.Constants
 import com.innovative.porosh.todoapp.utils.Functions
 import com.innovative.porosh.todoapp.viewModels.ToDoViewModel
 import com.innovative.porosh.todoapp.workManagerUtils.WorkManagerService
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NewToDoFragment : Fragment() {
 
     private lateinit var binding: FragmentNewToDoBinding

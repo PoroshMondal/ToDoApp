@@ -5,17 +5,13 @@ import androidx.lifecycle.LiveData
 import com.innovative.porosh.todoapp.daos.ToDoDao
 import com.innovative.porosh.todoapp.db.ToDoDatabase
 import com.innovative.porosh.todoapp.entities.ToDoModel
+import javax.inject.Inject
 
 /*
 * Creating the repository pattern
 * to communicate with the ViewModel and local or cloud data source
 * */
-class ToDoRepository(private val context: Context) {
-    private val toDoDao: ToDoDao
-
-    init {
-        toDoDao = ToDoDatabase.getDB(context).getToDoDao()
-    }
+class ToDoRepository @Inject constructor(val toDoDao: ToDoDao) {
 
     suspend fun insertToDo(toDoModel: ToDoModel){
         toDoDao.addToDo(toDoModel)

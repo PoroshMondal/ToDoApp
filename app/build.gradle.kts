@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    alias(libs.plugins.kotlinKapFortDataBinding)
+    alias(libs.plugins.kotlinKapt)
+    alias(libs.plugins.daggerHilt)
 }
 
 android {
@@ -50,6 +51,10 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.room.runtime)
     implementation (libs.androidx.work.rxjava2)
+
+    // dagger hilt for DI
+    implementation (libs.dagger.hilt.android)
+    kapt (libs.hilt.compiler)
 
     //noinspection KaptUsageInsteadOfKsp
     kapt(libs.androidx.room.compiler)
