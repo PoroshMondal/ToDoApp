@@ -1,7 +1,7 @@
 # ToDoApp 
 ToDoApp is a simple application developed using Kotlin and the latest Android Components.
 
-# Branch Information
+## Branch Information
 - old-feature
     - ToDo app basic operations
     - Data Binding is not used
@@ -9,7 +9,7 @@ ToDoApp is a simple application developed using Kotlin and the latest Android Co
     - Notification is not implemented
     - DI is not implemented
 
-# Features and components 
+## Features and components 
 - Data Binding functionality added
 - Designed the NewToDo screen
     - Input Box
