@@ -2,7 +2,7 @@
 ToDoApp is a simple application developed using Kotlin and the latest Android Components.
 
 ## Branch Information
-- todo-without-Di
+- todo-without-DI
     - ToDo app all the feature is implemented except DI
     - Dependency Injection is not used
 
