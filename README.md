@@ -1,14 +1,16 @@
 # ToDoApp 
 ToDoApp is a simple application developed using Kotlin and the latest Android Components.
 
-# Branch Information
-- development 
+## Branch Information
+- todo-without-Di
+    - ToDo app all the feature is implemented except DI
+    - Dependency Injection is not used
 
-# Design Pattern
+## Design Pattern
 - MVVM
 - Repository pattern for local db operations
 
-# Features and components 
+## Features and components 
 - Data Binding functionality added
 - Designed the NewToDo screen
     - Input Box
@@ -21,11 +23,11 @@ ToDoApp is a simple application developed using Kotlin and the latest Android Co
 - Checkbox 
 - Delete confirmation dialog
 
-# Binding
+## Binding
 - Layout binding used to bind the layout
 - Data binding used to bind the ToDo RecyclerView adapter
 
-# Database
+## Database
 - Room Library used for local db
 - Repository design pattern used with mvvm to do db operations
 - Operations 
@@ -34,7 +36,7 @@ ToDoApp is a simple application developed using Kotlin and the latest Android Co
     - Delete
     - Query
 
-# Background Operation
+## Background Operation
 - Coroutine used to do db operations
 - WorkManager used for push notification
      - This is one time work request
