@@ -39,3 +39,6 @@ ToDoApp is a simple application developed using Kotlin and the latest Android Co
 - WorkManager used for push notification
      - This is one time work request
      - Pop up the ToDo notification on that specific time
+
+## Dependency Injection (DI)
+- Android Hilt library used to make the class independent to it's dependencies
