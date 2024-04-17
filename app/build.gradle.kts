@@ -38,6 +38,11 @@ android {
     buildFeatures {
         dataBinding = true
     }
+
+    // Allow references to generated code
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
