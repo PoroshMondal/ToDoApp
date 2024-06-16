@@ -21,6 +21,8 @@
         tools:layout="@layout/fragment_new_to_do" >
         <action
             android:id="@+id/to_do_list_actions"
-            app:destination="@id/toDoListFragment" />
+            app:destination="@id/toDoListFragment"
+            app:popUpTo="@id/toDoListFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
